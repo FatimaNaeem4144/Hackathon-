@@ -1,0 +1,179 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+*::selection{
+    color: #000;
+    background-color: #fff;
+}
+:root{
+    --pink : rgb(54, 39, 45);
+    --winning-blocks: rgba(182, 72, 116, 0.308)
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Finger Paint', cursive;
+    background: linear-gradient(135deg, #3494e6, #ec6ead, #3494e6, #ec6ead);
+    background-size: 400% 400%;
+    animation: gradientAnimation 6s infinite;
+    color: #fff;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+h1 {
+    color: #fff;
+    font-size: 54px;
+    text-transform: uppercase;
+    font-weight: 400;
+    animation: glow 0.50s ease-in-out infinite alternate-reverse, scale 1s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px var(--pink), 0 0 10px var(--pink), 0 0 15px var(--pink), 0 0 20px var(--pink);
+    }
+    50% {
+        text-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink), 0 0 30px var(--pink), 0 0 40px var(--pink);
+    }
+    100% {
+        text-shadow: 0 0 5px var(--pink), 0 0 10px var(--pink), 0 0 15px var(--pink), 0 0 20px var(--pink);
+    }
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.container{
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 15px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Move the logout link to the right */
+nav ul li:last-child {
+    /* margin-right: 50rem; */
+    margin-left: 56rem;
+}
+
+/* Style for the logout link */
+nav ul li:last-child a {
+    color: #ff4500; /* Change the color as needed */
+}
+
+/* Add a hover effect for the logout link */
+nav ul li:last-child a:hover {
+    text-decoration: underline;
+}
+.subm{
+    color: white;
+    text-decoration: none;
+}
+/* Media Queries for Mobile Screens */
+@media (max-width: 768px) {
+    /* Adjust styles for smaller screens here */
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    /* Move the logout link to the right on smaller screens */
+    nav ul li:last-child {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+             <li><a href="/login">Log out</a></li>
+            <!-- Add more navbar items as needed -->
+        </ul>
+    </nav>
+
+    <!-- Form Section -->
+    <section>
+        <h2>Submit Your Project</h2>
+        <form id="projectForm">
+            <!-- Developer Name -->
+            <label for="developerName">Developer Name:</label>
+            <input type="text" id="developerName" name="developer" required>
+
+            <!-- Project Title -->
+            <label for="projectTitle">Project Title:</label>
+            <input type="text" id="projectTitle" name="title" required>
+
+            <!-- Project Description -->
+            <label for="projectDescription" >Project Description:</label>
+            <textarea id="projectDescription" name="description" rows="4" required></textarea>
+
+            <!-- Hosted URL -->
+            <label for="hostedURL" >Hosted URL:</label>
+            <input type="url" id="hostedURL" name="hostedURL" required>
+
+            <!-- Submit Button -->
+            <button type="submit" ><a href="/project" class="subm">Submit Project</a></button>
+        </form>
+    </section>
+
+    <!-- Add your scripts and other content here -->
+
+</body>
+
+</html>
