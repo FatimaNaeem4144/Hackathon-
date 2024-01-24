@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
-    <link rel="stylesheet" href="project.css">
-   
+    <link rel="stylesheet" href="projects.css">
 </head>
 <body>
-    <h1>Projects</h1>
-{{#each projects}}
-        <div class="project">
-            <h2>{{title}}</h2>
-            <p>Developer: {{developer}}</p>
-            <p>Description: {{description}}</p>
-            <p>Hosted URL: {{hostedURL}}</p>
-        </div>
-    {{/each}}
+    <nav>
+        <ul>
+            <li class="pro">Projects</a></li>
+            <li><a href="/login">Log out</a></li>
+        </ul>
+    </nav>
 
+    <div class="project-container">
+        {{#each projects}}
+            <div class="project-card">
+                <h2>{{title}}</h2>
+                <p>Developer: {{developer}}</p>
+                <p>Description: {{description}}</p>
+                <p>Hosted URL: {{hostedURL}}</p>
+            </div>
+        {{/each}}
+    </div>
 
 </body>
 </html>

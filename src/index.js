@@ -27,18 +27,32 @@ app.get("/signup", (req, res) => {
 
 app.get("/project", async (req, res) => {
     try {
-        // Assuming you are using sessions and the user's name is stored in the session
-        const userName = req.session.userName;
-
-        // Find the user by the stored user name
+        // Fetch the user by some identifier (e.g., name or user ID)
+        const userName = req.session.userName; // Assuming you are using sessions
         const user = await User.findOne({ name: userName });
 
         if (!user) {
             return res.render("project", { errorMessage: "User not found" });
         }
 
-        // Fetch all projects from the user's document
-        const projects = user.projects;
+        // Dummy projects data
+        const dummyProjects = [
+            {
+                title: "Sample Project 1",
+                developer: "John Doe",
+                description: "This is a dummy project description.",
+                hostedURL: "http://sample-project-1.com"
+            },
+            {
+                title: "Sample Project 2",
+                developer: "Jane Smith",
+                description: "Another dummy project description.",
+                hostedURL: "http://sample-project-2.com"
+            }
+        ];
+
+        // You can merge the dummy projects with the user's real projects
+        const projects = user.projects.concat(dummyProjects);
 
         res.render("project", { projects });
     } catch (error) {
@@ -47,41 +61,7 @@ app.get("/project", async (req, res) => {
     }
 });
 
-app.post("/project", async (req, res) => {
-    try {
-        const { name, title, developer, description, hostedURL } = req.body;
 
-        // Find the user by the submitted name
-        const user = await User.findOne({ name });
-
-        if (!user) {
-            return res.render("project", { errorMessage: "User not found" });
-        }
-
-        // Create a new project based on the submitted data
-        const newProject = {
-            title,
-            developer,
-            description,
-            hostedURL
-        };
-
-        // Push the new project to the user's projects array
-        user.projects.push(newProject);
-
-        // Save the updated user document
-        await user.save();
-
-        // Fetch all projects from the user's document
-        const projects = user.projects;
-
-        // Render the project.hbs page with the list of projects
-        res.render("project", { projects, successMessage: "Project submitted successfully!" });
-    } catch (error) {
-        console.error("Error submitting project:", error);
-        res.render("project", { errorMessage: "Error submitting project" });
-    }
-});
 
 app.post("/signup", async (req, res) => {
     const { name, password, confirmpassword } = req.body;
@@ -94,18 +74,19 @@ app.post("/signup", async (req, res) => {
         name: name,
         password: password,
         confirmpassword: confirmpassword,
+        projects: []  // Initialize projects array for new users
     };
 
     await User.insertMany([userData]);
     res.render("home");
 });
 
-// Handle user login
 app.post("/login", async (req, res) => {
     try {
         const check = await User.findOne({ name: req.body.name });
 
         if (check.password === req.body.password) {
+            req.session.userName = req.body.name;  // Store user name in session
             res.render("home");
         } else {
             res.send("Wrong Password");
